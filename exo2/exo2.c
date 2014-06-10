@@ -9,54 +9,35 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* definition des constantes */
-#ifndef clear
-	#ifdef __unix__
-		#define clear system("clear")
-	#elif defined _WIN32
-		#define clear system("cls")
-	#endif
-#endif
-#ifndef flush
-	#ifdef __unix__
-		#define flush __flush(stdin)
-	#elif defined _WIN32
-		#define flush fflush(stdin)
-	#endif
-#endif
-#ifndef SIZE
-	#define SIZE (3)
-#endif
-
-
 /* fonction main : fonction principale du programme */
 int main(int argc, char const *argv[])
 {
-	clear;
+	system("clear"); // Efacer la console (Linux)
+	system("cls"); // Effacer la console (Windows)
 	srand(time(NULL));
 	/* variables locales */
 	int i = 0;
 	int j = 0;
 	int k = 0;
 	int menu = 0;
-	int mat1[SIZE][SIZE];
-	int mat2[SIZE][SIZE];
-	int matResult[SIZE][SIZE];
-	int vect[SIZE][1];
-	int vectResult[SIZE][1];
+	int mat1[3][3];
+	int mat2[3][3];
+	int matResult[3][3];
+	int vect[3][1];
+	int vectResult[3][1];
 
 	/* instructions */
-	for (i = 0; i < SIZE; ++i)
+	for (i = 0; i < 3; ++i)
 	{
-		for (j = 0; j < SIZE; ++j)
+		for (j = 0; j < 3; ++j)
 		{
 			mat1[i][j] = rand()%6;
 		}
 	}
 
-	for (i = 0; i < SIZE; ++i)
+	for (i = 0; i < 3; ++i)
 	{
-		for (j = 0; j < SIZE; ++j)
+		for (j = 0; j < 3; ++j)
 		{
 			printf("%d ", mat1[i][j]);
 		}
@@ -71,45 +52,45 @@ int main(int argc, char const *argv[])
 	switch(menu)
 	{
 		case 1:
-			for (i = 0; i < SIZE; i++)
+			for (i = 0; i < 3; i++)
 			{
 				vect[i][0] = rand()%6;
 			}
-			for (i = 0; i < SIZE; ++i)
+			for (i = 0; i < 3; ++i)
 			{
 				vectResult[i][0] = 0;
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					vectResult[i][0] += mat1[i][j] * vect[j][0];
 				}
 			}
-			for (i = 0; i < SIZE; i++)
+			for (i = 0; i < 3; i++)
 			{
 				printf("%d\n", vectResult[i][0]);
 			}
 			break;
 		case 2:
-			for (i = 0; i < SIZE; ++i)
+			for (i = 0; i < 3; ++i)
 			{
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					mat2[i][j] = rand()%6;
 					matResult[i][j] = mat1[i][j] + mat2[i][j];
 				}
 			}
 			printf("mat2: \n");
-			for (i = 0; i < SIZE; ++i)
+			for (i = 0; i < 3; ++i)
 			{
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					printf("%2d", mat2[i][j]);
 				}
 				printf("\n");
 			}
 			printf("Somme: \n");
-			for (i = 0; i < SIZE; ++i)
+			for (i = 0; i < 3; ++i)
 			{
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					printf("%2d", matResult[i][j]);
 				}
@@ -117,43 +98,43 @@ int main(int argc, char const *argv[])
 			}
 			break;
 		case 3:
-			for (i = 0; i < SIZE; ++i)
+			for (i = 0; i < 3; ++i)
 			{
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					mat2[i][j] = rand()%6;
 				}
 			}
 
-			for (i=0; i < SIZE; ++i)
+			for (i=0; i < 3; ++i)
 			{
-				for (j=0; j < SIZE; ++j)
+				for (j=0; j < 3; ++j)
 				{
 					matResult[i][j]=0;
-					for (k=0; k < SIZE; ++k)
+					for (k=0; k < 3; ++k)
 						matResult[i][j] += mat1[i][k]*mat2[k][j];
 				}
 			}
 
-			for (i = 0; i < SIZE; ++i)
+			for (i = 0; i < 3; ++i)
 			{
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					printf("%2d", mat1[i][j]);	
 				}
-				if (i != (SIZE / 2))
+				if (i != (3 / 2))
 					printf("     ");
 				else
 					printf("  x  ");
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					printf("%2d", mat2[i][j]);
 				}
-				if (i != (SIZE / 2))
+				if (i != (3 / 2))
 					printf("     ");
 				else
 					printf("  =  ");
-				for (j = 0; j < SIZE; ++j)
+				for (j = 0; j < 3; ++j)
 				{
 					printf("%3d", matResult[i][j]);
 				}
