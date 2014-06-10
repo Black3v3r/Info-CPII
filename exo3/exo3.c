@@ -9,26 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* definition des constantes */
-#ifndef clear
-	#ifdef __unix__
-		#define clear system("clear")
-	#elif defined _WIN32
-		#define clear system("cls")
-	#endif
-#endif
-
-#ifndef MAXSIZE
-	#define MAXSIZE (15) // Définition de la taille maximale
-#endif
-
-
 /* fonction main : fonction principale du programme */
 int main(int argc, char const *argv[])
 {
 
 	/* variables locales */
-	int tab[MAXSIZE][MAXSIZE];
+	int tab[15][15];
 	int rang = 1;
 	int row = 0, col = 0;
 	int num = 1;
@@ -37,11 +23,13 @@ int main(int argc, char const *argv[])
 	#if defined _WIN32
 	system("chcp 65001"); // Permet d'afficher les accents et les carctères ASCII étendus sous Windows
 	#endif
-	clear; // On efface l'écran
 
-	for (row = 0; row < MAXSIZE; ++row) // Intialisation à 0 de toutes les cases du tableau
+	system("clear"); // Efacer la console (Linux)
+	system("cls"); // Effacer la console (Windows)
+
+	for (row = 0; row < 15; ++row) // Intialisation à 0 de toutes les cases du tableau
 	{
-		for (col = 0; col < MAXSIZE; ++col)
+		for (col = 0; col < 15; ++col)
 		{
 			tab[row][col] = 0;
 		}
