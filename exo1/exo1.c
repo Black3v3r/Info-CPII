@@ -11,30 +11,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* definition des constantes */
-#ifndef clear
-	#ifdef __unix__
-		#define clear system("clear")
-	#elif defined _WIN32
-		#define clear system("cls")
-	#endif
-#endif
-#ifndef flush
-	#ifdef __unix__
-		#define flush __flush(stdin)
-	#elif defined _WIN32
-		#define flush fflush(stdin)
-	#endif
-#endif
-#ifndef SIZE
-	#define SIZE (10)
-#endif
-
 
 /* fonction main : fonction principale du programme */
 int main(int argc, char const *argv[])
 {
-	clear;
+	system("clear"); // Efacer la console (Linux)
+	system("cls"); // Effacer la console (Windows)
 	srand(time(NULL));
 	/* variables locales */
 	int i = 0;
@@ -43,12 +25,12 @@ int main(int argc, char const *argv[])
 	int nCol = 0;
 	int sum = 0;
 	int prod = 1;
-	int tab[SIZE][SIZE];
+	int tab[10][10];
 
 	/* instructions */
-	for (i = 0; i < SIZE; ++i)
+	for (i = 0; i < 10; ++i)
 	{
-		for (j = 0; j < SIZE; ++j)
+		for (j = 0; j < 10; ++j)
 		{
 			tab[i][j] = 0;
 		}
@@ -60,14 +42,14 @@ int main(int argc, char const *argv[])
 		printf("Entrez un nombre de colonnes\n");
 		scanf("%d", &nCol);
 	}
-	while (nCol < 1 || nCol > SIZE);
+	while (nCol < 1 || nCol > 10);
 
 	do
 	{
 		printf("Entrez un nombre de lignes\n");
 		scanf("%d", &nLig);
 	}
-	while (nLig < 1 || nLig > SIZE);
+	while (nLig < 1 || nLig > 10);
 	
 	// Génération du tableau
 	for (i = 0; i < nLig; ++i)
