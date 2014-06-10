@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 
 	/* instructions */
 	#if defined _WIN32
-	system("chcp 65001"); // Permet d'afficher les accents et les carctères ASCII étendus sous Windows
+	system("chcp 65001"); // Permet d'afficher les accents et les carctères ASCII étendus sous Windows (ne pas chercher à retenir/comprendre, on peut faire sans...)
 	#endif
 
 	system("clear"); // Efacer la console (Linux)
